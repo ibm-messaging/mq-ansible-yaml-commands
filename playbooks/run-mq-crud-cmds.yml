@@ -1,0 +1,22 @@
+---
+# (c) Copyright IBM Corporation 2023
+# Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
+
+# Playbook file: playbooks/run-mq-crud-cmds.yml
+
+# This sample playbook demonstrates the simplest form of invoking the runMQCmds role
+# by making use of default argument values defined for the role.
+#
+# If required, default argument values can be overidden when invoking the role. This allows 
+# argument values to be varied on a per role invocation basis (see README.md). This also means
+# that multiple invocations of the role can be specified in the same playbook, if required. 
+# See other sample playbooks for examples of this.
+
+- name: Sample playbook to run YAML form mq CRUD commands specified in a default cmds file
+  hosts: localhost
+  gather_facts: yes
+
+  roles:
+  - { role: runMQCmds
+    }
+...

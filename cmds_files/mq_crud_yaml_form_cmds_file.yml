@@ -1,0 +1,197 @@
+---
+# (c) Copyright IBM Corporation 2023
+# Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
+#
+# File: cmds_files/mq_crud_yaml_form_cmds_file.yml
+#
+# Sample file containing YAML form MQ create (define), update (alter), delete (CRUD) type commands to be run by the runMQCmds role.
+#
+# Commands and their attributes are specified as key/value pairs. The key/value pairs are
+# identical to those that can be specified when using the MQ administrative POST REST API
+# to issue JSON format MQSC commands. Any key/value pairs not specified will be set to
+# default values as defined for the queue manager on which commands are run.
+#
+# In YAML, it is important to specify case sensitive string names in single quotes, but note
+# that on the z/OS platform, some values may be translated to uppercase.
+
+# Array of MQ commands.
+mq_commands:
+#
+# Basic define, alter, display, delete and clear commands.
+#
+# Define a queue.
+  - command: define
+    name: ANSIBLE.TEST.QUEUE.1
+    parameters:
+      descr: 'Test queue 1 for Ansible'
+      replace: 'yes'
+      maxdepth: 9999
+    qualifier: qlocal
+# Define another queue.
+  - command: define
+    name: ANSIBLE.TEST.QUEUE.2
+    parameters:
+      descr: 'Test queue 2 for Ansible'
+      replace: 'yes'
+      maxdepth: 500000
+      put: disabled
+      notrigger: 'yes'
+    qualifier: qlocal
+# Define another queue like an existing queue, but with a name in lowercase and with some different attributes.
+  - command: define
+    name: 'ansible.test.queue.3'
+    parameters:
+      descr: 'Test queue 3 for Ansible like Test queue 2'
+      replace: 'yes'
+      like: ANSIBLE.TEST.QUEUE.2
+      maxdepth: 700000
+      get: enabled
+      share: 'yes'
+    qualifier: qlocal
+# Define a channel.
+  - command: define
+    name: ANSIBLE.TEST.SVRCONN
+    parameters:
+      descr: 'Test server connection channel for Ansible'
+      replace: 'yes'
+      chltype: svrconn
+      kaint: 60
+    qualifier: channel
+# Define a namelist with both upper and lower case queue names.
+  - command: define
+    name: ANSIBLE.TEST.NAMELIST
+    parameters:
+      descr: 'Test namelist for Ansible'
+      replace: 'yes'
+      names: ['ANSIBLE.TEST.QUEUE.1', 'ANSIBLE.TEST.QUEUE.2', 'ansible.test.queue.3']
+      nltype: queue
+    qualifier: namelist
+# Define a process.
+  - command: define
+    name: ANSIBLE.TEST.PROCESS
+    parameters:
+      descr: 'Test process for an CICS transaction called ANMQ (Ansible MQ)'
+      replace: 'yes'
+      appltype: CICS
+      applicid: ANMQ
+      userdata: 'Ansible Automation for MQ'
+    qualifier: process
+# Define a topic.
+  - command: define
+    name: ANSIBLE.TEST.TOPIC
+    parameters:
+      descr: 'Test topic for Ansible'
+      replace: 'yes'
+      topicstr: 'IBM/MQ/ANSIBLE/AUTOMATION'
+      pub: enabled
+      pubscope: qmgr
+      sub: enabled
+      subscope: qmgr
+      usedlq: 'no'
+    qualifier: topic
+# Define a subscription.
+  - command: define
+    name: ANSIBLE.TEST.SUB
+    parameters:
+      replace: 'yes'
+      topicstr: 'IBM/MQ/ANSIBLE/AUTOMATION'
+      dest: ANSIBLE.TEST.SUB.QUEUE
+      subuser: SSMITH
+    qualifier: sub
+
+# Alter queue manager attributes to disable all events.
+  - command: alter
+    parameters:
+      authorev: disabled   
+      inhibtev: disabled
+      localev: disabled    
+      remoteev: disabled  
+      strstpev: disabled   
+      perfmev: disabled    
+      configev: disabled   
+      cmdev: disabled      
+      chlev: disabled      
+      sslev: disabled      
+      bridgeev: disabled          
+    qualifier: qmgr
+# Alter attributes of a queue.
+  - command: alter
+    name: ANSIBLE.TEST.QUEUE.1
+    parameters:
+      maxdepth: 300000
+      noshare: 'yes'
+    qualifier: qlocal
+# Alter attributes of a channel.
+  - command: alter
+    name: ANSIBLE.TEST.SVRCONN
+    parameters:
+      chltype: svrconn
+      sendexit: ['sndexit1', 'sndexit2', 'sndexit3']
+      senddata: ['snddata1', 'snddata2', 'snddata3']
+    qualifier: channel
+
+# Display all queue manager properties.
+  - command: display
+    qualifier: qmgr
+    responseParameters: [all]
+# Display a queue.
+  - command: display
+    name: ANSIBLE.TEST.QUEUE.1
+    qualifier: qlocal
+# Display all local queues that are disabled for gets.
+  - command: display
+    name: '*'
+    parameters:
+      where: 'get eq disabled'
+    qualifier: qlocal
+# Display the status of all queues that have messages on them.
+  - command: display
+    name: '*'
+    parameters:
+      where: 'curdepth gt 0'
+    qualifier: qstatus
+# Display the status of all SYSTEM queues that have messages on them.
+  - command: display
+    name: 'SYSTEM.*'
+    parameters:
+      where: 'curdepth gt 0'
+    qualifier: qstatus
+# Display a channel.
+  - command: display
+    name: ANSIBLE.TEST.SVRCONN
+    qualifier: channel
+
+# Delete a queue.
+  - command: delete
+    name: ANSIBLE.TEST.QUEUE.1
+    qualifier: qlocal
+# Display a queue to confirm that it has been deleted.
+  - command: display
+    name: ANSIBLE.TEST.QUEUE.1
+    qualifier: qlocal
+
+# Clear all messages on a queue.
+  - command: clear
+    name: ANSIBLE.TEST.QUEUE.2
+    qualifier: qlocal
+
+#
+# Command to redefine a queue with NOREPLACE, to show how a command could fail
+# and hence stop processing of subsequent commands in the command input file.
+# If you do not want processing to stop for such errors, you can set option
+# mq_stop_if_mq_cmd_completes_with_error option.
+#
+# Define the same queue again without replacing it.
+#
+# This command has been deliberately placed here to ensure that the above commands
+# complete first.
+  - command: define
+    name: ANSIBLE.TEST.QUEUE.2
+    parameters:
+      descr: 'Test queue 2 for Ansible'
+      maxdepth: 500000
+      put: disabled
+      notrigger: 'yes'
+      noreplace: 'yes'
+    qualifier: qlocal
+...

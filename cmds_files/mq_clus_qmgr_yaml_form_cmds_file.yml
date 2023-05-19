@@ -1,0 +1,64 @@
+---
+# (c) Copyright IBM Corporation 2023
+# Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
+
+# File: cmds_files/mq_clus_qmgr_yaml_form_cmds_file.yml
+
+# Sample file containing YAML form MQ cluster queue manager commands to be run by the runMQCmds role.
+#
+# Commands and their attributes are specified as key/value pairs. The key/value pairs are 
+# identical to those that can be specified when using the MQ administrative POST REST API 
+# to issue JSON format MQSC commands. Any key/value pairs not specified will be set to
+# default values as defined for the queue manager on which commands are run.
+#
+# In YAML, it is important to specify case sensitive string names in single quotes, but note 
+# that on the z/OS platform, some values may be translated to uppercase.
+
+# Array of MQ commands.
+mq_commands:
+#
+# Cluster Queue Manager commands.
+#
+# Display information about ALL cluster queue managers in a cluster.
+  - command: display
+    name: '*'
+    parameters:
+      cluster: 'MAYUR'
+    qualifier: clusqmgr
+# Display cluster information for a given cluster queue manager.
+  - command: display
+    name: MQ07
+    parameters:
+      cluster: 'MAYUR'
+    qualifier: clusqmgr
+# Display channel information for a given cluster queue manager.
+  - command: display
+    name: MQ07
+    parameters:
+      channel: 'TO.MQ07'
+    qualifier: clusqmgr
+# Suspend the queue manager (on which this command is run) in the named cluster.
+  - command: suspend
+    parameters:
+      cluster: 'MAYUR'
+    qualifier: qmgr
+# Display cluster information for a cluster queue manager to confirm that it is suspended.
+  - command: display
+    name: MQ07
+    parameters:
+      cluster: 'MAYUR'
+    responseParameters: [suspend]
+    qualifier: clusqmgr
+# Command to resume a queue manager (on which this command is run) in the named cluster.
+  - command: resume
+    parameters:
+      cluster: 'MAYUR'
+    qualifier: qmgr
+# Display cluster information for a cluster queue manager to confirm that it is resumed.
+  - command: display
+    name: MQ07
+    parameters:
+      cluster: 'MAYUR'
+    responseParameters: [suspend]
+    qualifier: clusqmgr
+...

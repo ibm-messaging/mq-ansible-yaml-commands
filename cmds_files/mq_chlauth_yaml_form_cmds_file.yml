@@ -1,0 +1,48 @@
+---
+# (c) Copyright IBM Corporation 2023
+# Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
+
+# File: cmds_files/sample_mq_chlauth_yaml_form_cmds_file.yml
+
+# Sample file containing YAML form MQ channel authentication rule commands to be run by the runMQCmds role.
+#
+# Commands and their attributes are specified as key/value pairs. The key/value pairs are 
+# identical to those that can be specified when using the MQ administrative POST REST API 
+# to issue JSON format MQSC commands. Any key/value pairs not specified will be set to
+# default values as defined for the queue manager on which commands are run.
+#
+# In YAML, it is important to specify case sensitive string names in single quotes, but note 
+# that on the z/OS platform, some values may be translated to uppercase.
+
+# Array of MQ commands.
+mq_commands:
+#
+# Channel authentication rule commands.
+#
+# Remove channel authentication rule, if one was previously set, for a channel.
+  - command: set
+    name: ANSIBLE.TEST.SVRCONN
+    parameters:
+      type: SSLPEERMAP
+      sslpeer: ('CN="Steve Smith", L="BankA"')
+      mcauser: SSMITH
+      chckclnt: ASQMGR
+      action: remove
+    qualifier: chlauth
+# Set channel authentication rule for a channel.
+  - command: set
+    name: ANSIBLE.TEST.SVRCONN
+    parameters:
+      type: SSLPEERMAP
+      sslpeer: ('CN="Steve Smith", L="BankA"')
+      mcauser: SSMITH
+      chckclnt: ASQMGR
+    qualifier: chlauth
+# Display channel authentication rule for a channel. 
+  - command: display
+    name: ANSIBLE.TEST.SVRCONN
+    parameters:
+      type: SSLPEERMAP
+    responseParameters: [sslpeer, chckclnt, mcauser]
+    qualifier: chlauth
+...

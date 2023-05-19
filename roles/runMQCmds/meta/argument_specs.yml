@@ -1,0 +1,47 @@
+---
+# (c) Copyright IBM Corporation 2023
+# Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
+
+# File: roles/runMQCmds/meta/argument_specs.yml
+
+# Argument Specification to perform basic validation of optional arguments that can be 
+# specified on invocations of the runMQCmds role.
+#
+# As IBM MQ has extensive logic to perform validation of MQ resource attributes, 
+# it is not practical to duplicate such validation here.
+
+argument_specs:
+# Before running a runMQCmds role, parameters passed on the role are validated against
+# this specification. Hence, this is the main entry point for the role.
+  main:
+    short_description: The main entry point for the runMQCmds role.
+    options:
+      cmds_file_name:
+        type: "str"
+        required: false
+        description: "The full directory path for the file that contains the MQ commands to be run"
+      webserver_addr:
+        type: "str"
+        required: false
+        description: "The mqweb server address"
+      webserver_port:
+        type: "str"
+        required: false
+        description: "The mqweb server port"
+      api_userid:
+        type: "str"
+        required: false
+        description: "The user ID to use when issuing the MQ Administrative POST REST API"
+      api_password:
+        type: str
+        required: false
+        description: "The password to use when issuing the MQ Administrative POST REST API"
+      qmgr_name:
+        type: "str"
+        required: false
+        description: "The name of the queue manager on which commands are to be run"
+      stop_on_error:
+        type: "bool"
+        required: false
+        description: "The option to indicate if processing of subsequent MQ commands should stop if the current MQ command fails with certain errors"
+...
