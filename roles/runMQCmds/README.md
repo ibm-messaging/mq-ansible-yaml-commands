@@ -1,5 +1,4 @@
-runMQCmds
-=========
+# runMQCmds
 The **runMQCmds** role reads **YAML** form IBM MQ commands in an input cmds file and invokes the **IBM MQ Administrative POST REST API** to issue JSON formatted MQSC commands against MQ queue managers.
 
 The input cmds file contains a YAML array named **mq_commands:**, of one or more MQ commands. Each command is defined as **- command:**.
@@ -8,12 +7,10 @@ Commands and their attributes are specified as key/value pairs that are identica
 
 Since the source code for the runMQCmds role has been made available, users can extend the runMQCmds role to support additional arguments if required. And, any such extensions can be contributed back into the collection so that other users can benefit from making use of them.
 
-Requirements
-------------
+## Requirements
 Users will need to configure and run a **mqweb server** (see https://www.ibm.com/docs/en/ibm-mq/9.3?topic=administering-administration-using-rest-api for further information about this).
 
-Role Variables
---------------
+## Role Variables
 The runMQCmds role can be invoked in Ansible playbooks in a simple form with default arguments, or it can be invoked with one or more of the following **overriding arguments**:
 
 - **cmds_file_name**: The full directory path for the file that contains the MQ commands to be run. This is a string value.
@@ -28,8 +25,7 @@ The runMQCmds role can be invoked in Ansible playbooks in a simple form with def
 
 The runMQCmds role also makes use of a local variable called **overallCompCode** to store the overall completion code resulting from the execution of the MQ commands in the input cmds file. 
 
-Files associated with the runMQCmds role
-----------------------------------------
+## Files associated with the runMQCmds role
 The following files are assocociated with the **runMQCmds** role:
 
 - [**roles/runMQCmds/README.md**](roles/runMQCmds/README.md) - this README file.
@@ -43,14 +39,13 @@ The following files are assocociated with the **runMQCmds** role:
 
   As the MQ command is run by issuing the **IBM MQ administrative POST REST API**, the **ansible.builtin.uri** module is used to issue the REST API call. A **user ID** and **password** are set on the call for basic authentication.
 
-  This file also contains **debug statements** that are executed when playbooks are run with the **Ansible -vv** or **-vvv** options to provide extra information.
+  This file also contains **debug statements**, that are executed when playbooks are run with the **Ansible -vv** or **-vvv** options, to provide extra information.
 
-Dependencies
-------------
+## Dependencies
 A mqweb server needs to be configured and running so that the runMQCmds role can issue MQ REST API calls. 
 
-Example cmds input file
------------------------
+## Example cmds input file
+The purpose of the following file is to show how YAML form MQ start and stop commands could be issued.
 ```
 ---
 # (c) Copyright IBM Corporation 2023
@@ -91,8 +86,8 @@ mq_commands:
     qualifier: channel
 ...
 ```
-Example Playbook
-----------------
+
+## Example Playbook
 ```
 ---
 # (c) Copyright IBM Corporation 2023
@@ -113,14 +108,12 @@ Example Playbook
     }
 ...
 ```
-License
--------
+
+## License
 Licensed under [Apache License](https://opensource.org/licenses/Apache-2.0).
 
-Copyright
----------
+## Copyright
 © Copyright IBM Corporation 2023
 
-Author Information
-------------------
+## Author Information
 IBM UK Labs Ltd.

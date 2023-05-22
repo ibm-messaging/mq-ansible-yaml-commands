@@ -1,5 +1,4 @@
 # IBM MQ Ansible Collection to issue YAML form commands 
-
 The **IBM MQ Ansible Collection to issue YAML form commands** can be used to **administer IBM MQ Queue Managers** and **provision and administer IBM MQ resources** on **distributed** or **z/OS** platforms.
 
 Numerous sample **Ansible Playbooks** are provided as part of the collection which invoke the **runMQCmds** role to run **IBM MQ commands** that are specified in **YAML** form in an input cmds file. 
@@ -13,7 +12,6 @@ To be able to represent IBM MQ commands in a YAML form provides for a **modern a
 As mentioned in the **Getting Started** section below, users will need to perform some customization to run the playbooks in their own environments.
 
 ## Playbook Summary
-
 Ansible Playbooks are typically run on an **Ansible Control node**. Code in a playbook typically acts on resources in an **Ansible Managed node**. For example, Ansible may be installed on a laptop so that the laptop can act as an Ansible control node. Playbooks can then be run on the control node to manage resources on a managed node.
 
 The use of playbooks provides for **automation**, and for the possibility to run playbooks as part of a **Continuous Integration and Continuous Delivery/Continuous Deployment (CI/CD) pipeline**.
@@ -41,7 +39,6 @@ The following sample cmds files are also provided, and are processed by the resp
 7. [**mq_display_qmgr_yaml_form_cmds_file.yml**](mq_display_qmgr_yaml_form_cmds_file.yml)
 
 ## cmds file summary
-
 A cmds file contains a YAML array named **mq_commands:**, of one or more MQ commands. Each command is defined as **- command:**.
 
 Commands and their attributes are specified as key/value pairs that are identical to those that can be specified when using the IBM MQ administrative POST REST API to issue JSON format MQSC commands. Therefore, the YAML representation of **any** JSON formatted MQSC commands supported by the POST REST API can be specified in an input cmds file (see: https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adminactionqmgrqmgrnamemqsc-post-json-formatted-command for a list of supported commands).
@@ -49,7 +46,6 @@ Commands and their attributes are specified as key/value pairs that are identica
 The sample cmds files listed above provide examples of the required YAML syntax.
 
 ## runMQCmds role Summary
-
 The **runMQCmds** role reads YAML form IBM MQ commands and invokes the **IBM MQ Administrative POST REST API** to issue JSON formatted MQSC commands against MQ queue managers. 
 
 The runMQCmds role can be invoked in Ansible playbooks in a simple form with default arguments, or it can be invoked with one or more **overriding arguments** supported by the runMQCmds role. Refer to the README.md file for the runMQCmds role for further information.
@@ -90,6 +86,7 @@ display_skipped_hosts=False
 - Standard **ansible.builtin.*** modules.
 
 ## Getting Started
+- Ansible will need to be configured on a control node so that playbooks can be run on the control node to administer resources on a managed node (see: https://docs.ansible.com/ansible/latest/getting_started/index.html).
 - If users are unfamiliar with Ansible playbooks, users may want to refer to the Ansible documentation about playbooks first (see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html).
 
 - Users will need to perform some customization before running the playbooks: 
@@ -105,7 +102,6 @@ display_skipped_hosts=False
       Where applicable, remember to replace hostnames and port numbers with values that are specific to user environments.
 
 ## Running the playbooks
-
 To run a sample playbook, issue the respective command (as stated below) from the directory in which this MQ collection has been installed
 
 1. MQ CRUD commands sample playbook, issue:
@@ -139,8 +135,10 @@ To run a sample playbook, issue the respective command (as stated below) from th
     ansible-playbook ./playbook/run-mq-display-qmgr-cmds.yml
     ```
 ## Copyright
-
-© Copyright IBM Corporation 2023
+© Copyright IBM Corporation 2023.
 
 ## License
 Licensed under [Apache License](https://opensource.org/licenses/Apache-2.0).
+
+## Author Information
+IBM UK Labs Ltd.
