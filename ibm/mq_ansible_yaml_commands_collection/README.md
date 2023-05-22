@@ -5,7 +5,7 @@ Numerous sample **Ansible Playbooks** are provided as part of the collection whi
 
 The runMQCmds role invokes the **IBM MQ Administrative POST REST API** to issue **JSON formatted MQSC commands** against MQ queue managers. Commands and their attributes are specified as key/value pairs in the input file. The key/value pairs are identical to those that can be specified when using the **IBM MQ Administrative POST REST API** to issue JSON format MQSC commands. The following diagram shows the flow:
 
-<img src="./mq_cmds_deployment_flow.png"  width="720" height="405">
+<img src="./docs/mq_cmds_deployment_flow.png"  width="720" height="405">
 
 To be able to represent IBM MQ commands in a YAML form provides for a **modern approach, with simple and existing documented IBM MQ attribute name/value pairs**. Users can define the cmds file in their favourite YAML editor, which may include user-defined templates or schemas to limit typographical errors and perform pre command execution validation.
 
