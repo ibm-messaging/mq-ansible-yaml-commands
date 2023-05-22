@@ -51,10 +51,10 @@ dependencies: {}
 repository: https://github.com/ibm-messaging/mq-ansible-yaml-commands
 
 # The URL to any online docs
-documentation: https://github.com/ibm-messaging/mq-ansible-yaml-commands/ibm/mq_ansible_yaml_commands_collection/READMQ.md
+documentation: https://github.com/ibm-messaging/mq-ansible-yaml-commands/blob/main/ibm/mq_ansible_yaml_commands_collection/README.md
 
 # The URL to the homepage of the collection/project
-homepage: https://github.com/ibm-messaging/mq-ansible-yaml-commands/ibm/mq_ansible_yaml_commands_collection
+homepage: https://github.com/ibm-messaging/mq-ansible-yaml-commands/tree/main/ibm/mq_ansible_yaml_commands_collection
 
 # The URL to the collection issue tracker
 issues: https://github.com/ibm-messaging/mq-ansible-yaml-commands/issues
