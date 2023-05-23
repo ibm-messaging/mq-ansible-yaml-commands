@@ -6,6 +6,6 @@
 
 # Variables file for playbook run-mq-chlauth-cmds.yml
 
-# Override value to be used when running the channel authentication rules commands.
-cmds_file_name: ~/mq/cmds_files/mq_chlauth_yaml_form_cmds_file.yml
+# runMQCmds role override value to be used when running the channel authentication rules commands.
+cmds_file_name: ../cmds_files/mq_chlauth_yaml_form_cmds_file.yml
 ...

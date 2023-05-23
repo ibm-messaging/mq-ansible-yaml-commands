@@ -46,7 +46,7 @@ mq_commands:
       replace: 'yes'
       chltype: SDR
       trptype: TCP
-      conname: 'WINMVS4C.hursley.ibm.com(1408)'
+      conname: 'my.host.name(1408)'
       xmitq: MQ08
     qualifier: channel
 ...

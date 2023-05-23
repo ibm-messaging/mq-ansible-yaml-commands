@@ -13,6 +13,6 @@
 
   roles:
   - { role: runMQCmds,
-        cmds_file_name: '~/mq/cmds_files/mq_clus_qmgr_yaml_form_cmds_file.yml'
+        cmds_file_name: '../cmds_files/mq_clus_qmgr_yaml_form_cmds_file.yml'
     }
 ...

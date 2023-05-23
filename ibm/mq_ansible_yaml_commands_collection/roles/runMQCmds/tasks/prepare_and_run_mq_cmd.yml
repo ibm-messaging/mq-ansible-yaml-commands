@@ -7,7 +7,7 @@
 # Include tasks list for role runMQCmds to prepare and run the MQ command
 
 # Print target queue manager for command when playbook is run with the -vv debug option.
-- name: Print full command output
+- name: Print name of target queue manager on which commands are to be run
   ansible.builtin.debug:
     msg: "Target queue manager for command: {{ qmgr_name }}"
     verbosity: 2
@@ -65,11 +65,11 @@
 # than the REST API implementation on IBM MQ for z/OS. Refer to the section on 'POST - JSON formatted command' 
 # in the IBM MQ Docs for specific information about this.
 #
-# Print command output when playbook is run with the -vv debug option.
+# Print command output when playbook is run with the -vvv debug option.
 - name: Print command output
   ansible.builtin.debug:
     msg: "{{ mq_output }}"
-    verbosity: 2
+    verbosity: 3
 
 - name: Set overall completion code and end command processing if required
   ansible.builtin.set_fact:
@@ -77,9 +77,9 @@
   failed_when: ((stop_on_error | bool) == true) and 
                ((overallCompCode | int) != 0)
 
-# Print the overall completion code when playbook is run with the -vv debug option.
+# Print the overall completion code when playbook is run with the -vvv debug option.
 - name: Print overall completion code
   ansible.builtin.debug:
-    msg: "{{ overallCompCode | int  }}"
-    verbosity: 2
+    msg: "Overall Completion Code: {{ overallCompCode | int }}"
+    verbosity: 3
 ...

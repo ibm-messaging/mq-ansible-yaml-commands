@@ -23,13 +23,13 @@ mq_commands:
   - command: display
     name: '*'
     parameters:
-      cluster: 'MAYUR'
+      cluster: 'CLUS01'
     qualifier: clusqmgr
 # Display cluster information for a given cluster queue manager.
   - command: display
     name: MQ07
     parameters:
-      cluster: 'MAYUR'
+      cluster: 'CLUS01'
     qualifier: clusqmgr
 # Display channel information for a given cluster queue manager.
   - command: display
@@ -40,25 +40,25 @@ mq_commands:
 # Suspend the queue manager (on which this command is run) in the named cluster.
   - command: suspend
     parameters:
-      cluster: 'MAYUR'
+      cluster: 'CLUS01'
     qualifier: qmgr
 # Display cluster information for a cluster queue manager to confirm that it is suspended.
   - command: display
     name: MQ07
     parameters:
-      cluster: 'MAYUR'
+      cluster: 'CLUS01'
     responseParameters: [suspend]
     qualifier: clusqmgr
 # Command to resume a queue manager (on which this command is run) in the named cluster.
   - command: resume
     parameters:
-      cluster: 'MAYUR'
+      cluster: 'CLUS01'
     qualifier: qmgr
 # Display cluster information for a cluster queue manager to confirm that it is resumed.
   - command: display
     name: MQ07
     parameters:
-      cluster: 'MAYUR'
+      cluster: 'CLUS01'
     responseParameters: [suspend]
     qualifier: clusqmgr
 ...

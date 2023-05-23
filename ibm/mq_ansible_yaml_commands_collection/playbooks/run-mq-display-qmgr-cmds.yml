@@ -11,7 +11,7 @@
   hosts: localhost
   gather_facts: yes
 
-  vars_files: ./vars/override_vars_for_display_qmgr_cmds.yml
+  vars_files: ./vars/role_override_vars_for_display_qmgr_cmds.yml
 
   roles:
   - { role: runMQCmds

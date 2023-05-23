@@ -6,7 +6,7 @@
 
 # Variables file for playbook run-mq-display-qmgr-cmds.yml
 
-# Override values to be used when running the display qmgr command.
-cmds_file_name: ~/mq/cmds_files/mq_display_qmgr_yaml_form_cmds_file.yml
+# Role override values to be used when running the display qmgr command.
+cmds_file_name: ../cmds_files/mq_display_qmgr_yaml_form_cmds_file.yml
 qmgr_name: MQ08
 ...
