@@ -1,6 +1,6 @@
 # Contributing to the mq-ansible-yaml-commands repository
 
-Thank you for your interest in wanting to contribute to our open-source **mq-ansible-yaml-commands** repository in the **ibm-messaging** project.
+Thank you for your interest in wanting to contribute to the open-source **mq-ansible-yaml-commands** repository in the **ibm-messaging** project.
 
 To ensure that the codebase is always healthy and does not result in deployment issues when forked and used, it is important that you pre-check your additions and updates for any potential code conflicts before uploading your changes to the GitHub Repository. 
 
