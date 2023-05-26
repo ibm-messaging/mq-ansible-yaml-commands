@@ -2,7 +2,7 @@
 # (c) Copyright IBM Corporation 2023
 # Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
 
-# Playbook file: playbooks/run-mq-cfstruct-cmds.yml
+# Playbook file: playbooks/run_mq_cfstruct_cmds.yml
 
 # This sample playbook demonstrates how to invoke the runMQCmds role with arguments, to run
 # MQ for z/OS CF structure commands.
