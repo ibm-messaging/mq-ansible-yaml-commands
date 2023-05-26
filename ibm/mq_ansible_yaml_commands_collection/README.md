@@ -96,7 +96,7 @@ display_skipped_hosts=False
 - Ensure that the dependencies stated above have been configured.
 - Configure Ansible on a control node so that playbooks can be run on the control node to administer resources on a managed node: see [**Getting started with Ansible**](https://docs.ansible.com/ansible/latest/getting_started/index.html).
 - See [**Ansible playbooks**](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) for more information about playbooks.
-- Get this collection from Git.
+- Get this collection from [**ibm-messaging/mq-ansible-yaml-commands**](https://github.com/ibm-messaging/mq-ansible-yaml-commands)
 
     The files for the collection are stored in the Ansible defined directory structures for [**Collection directories and files**](https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_structure.html#collection-directories-and-files) and [**Role directory structure**](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#role-directory-structure). 
     
