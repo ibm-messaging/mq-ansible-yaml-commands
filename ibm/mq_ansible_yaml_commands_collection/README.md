@@ -16,13 +16,13 @@ In order to run the sample playbooks, users will need to run perform the customi
 ## Playbook Summary
 The following sample MQ playbooks run on a control node to issue YAML form MQ commands against MQ queue managers on managed nodes. The playbooks demonstrate:
 
-1. [**run-mq-crud-cmds.yml**](playbooks/run-mq-crud-cmds.yml) - # the simplest form of invocation of the runMQCmds role to run various YAML form MQ CRUD commands specified in a default cmds input file.
-2. [**run-mq-cfstruct-cmds.yml**](playbooks/run-mq-cfstruct-cmds.yml) - # an invocation of the runMQCmds role with arguments, to run YAML form MQ CF structure commands specified in a cmds input file.
-3. [**run-mq-comms-cmds.yml**](playbooks/run-mq-comms-cmds.yml) - # multiple invocations of the runMQCmds role with varying arguments, to run YAML form MQ commands specified in multiple cmds input files at sending and receiving queue managers.
-4. [**run-mq-chlauth-cmds.yml**](playbooks/run-mq-chlauth-cmds.yml) - # an invocation of the runMQCmds to run YAML form MQ channel authentication rule commands specified in a cmds input file. As described in comments in this playbook, argument overrides are specified with the '-e' (extra variables) option when running the playbook.
-5. [**run-mq-start-stop-cmds.yml**](playbooks/run-mq-start-stop-cmds.yml) - # an invocation of the runMQCmds role with arguments, to run YAML form MQ start and stop commands specified in a cmds input file.
-6. [**run-mq-clus-qmgr-cmds.yml**](playbooks/run-mq-clus-qmgr-cmds.yml) - # an invocation of the runMQCmds role with arguments, to run YAML form MQ cluster queue manager commands specified in a cmds input file.
-7. [**run-mq-display-qmgr-cmds.yml**](playbooks/run-mq-display-qmgr-cmds.yml) - # an invocation of the runMQCmds role with argument overrides specified in a variable file (vars_file) included in the playbook, to run YAML form MQ cluster queue manager commands specified in a cmds input file.
+1. [**run_mq_crud_cmds.yml**](playbooks/run_mq_crud_cmds.yml) - # the simplest form of invocation of the runMQCmds role to run various YAML form MQ CRUD commands specified in a default cmds input file.
+2. [**run_mq_cfstruct_cmds.yml**](playbooks/run_mq_cfstruct_cmds.yml) - # an invocation of the runMQCmds role with arguments, to run YAML form MQ CF structure commands specified in a cmds input file.
+3. [**run_mq_comms_cmds.yml**](playbooks/run_mq_comms_cmds.yml) - # multiple invocations of the runMQCmds role with varying arguments, to run YAML form MQ commands specified in multiple cmds input files at sending and receiving queue managers.
+4. [**run_mq_chlauth_cmds.yml**](playbooks/run_mq_chlauth_cmds.yml) - # an invocation of the runMQCmds to run YAML form MQ channel authentication rule commands specified in a cmds input file. As described in comments in this playbook, argument overrides are specified with the '-e' (extra variables) option when running the playbook.
+5. [**run_mq_start_stop_cmds.yml**](playbooks/run_mq_start_stop_cmds.yml) - # an invocation of the runMQCmds role with arguments, to run YAML form MQ start and stop commands specified in a cmds input file.
+6. [**run_mq_clus_qmgr_cmds.yml**](playbooks/run_mq_clus_qmgr_cmds.yml) - # an invocation of the runMQCmds role with arguments, to run YAML form MQ cluster queue manager commands specified in a cmds input file.
+7. [**run_mq_display_qmgr_cmds.yml**](playbooks/run_mq_display_qmgr_cmds.yml) - # an invocation of the runMQCmds role with argument overrides specified in a variable file (vars_file) included in the playbook, to run YAML form MQ cluster queue manager commands specified in a cmds input file.
 
 ## cmds file summary
 A cmds file contains a YAML array named **mq_commands:**, of one or more MQ commands. Each command is defined as **- command:**. This can be seen in the above flow diagram and in the sample cmds files listed below.
@@ -33,9 +33,9 @@ The following sample cmds files, which are processed by the respective playbooks
 
 1. [**mq_crud_yaml_form_cmds_file.yml**](cmds_files/mq_crud_yaml_form_cmds_file.yml) - # This is defined as the default cmds file to use.
 2. [**mq_cfstruct_yaml_form_cmds_file.yml**](cmds_files/mq_cfstruct_yaml_form_cmds_file.yml)
-3. (a) [**mq_sending_end_yaml_form_cmds_file.yml**](cmds_files/mq_sending_end_yaml_form_cmds_file.yml) - # Processed by run-mq-comms-cmds.yml.
+3. (a) [**mq_sending_end_yaml_form_cmds_file.yml**](cmds_files/mq_sending_end_yaml_form_cmds_file.yml) - # Processed by run_mq_comms_cmds.yml.
 
-   (b) [**mq_receiving_end_yaml_form_cmds_file.yml**](cmds_files/mq_receiving_end_yaml_form_cmds_file.yml) - # Processed by run-mq-comms-cmds.yml.
+   (b) [**mq_receiving_end_yaml_form_cmds_file.yml**](cmds_files/mq_receiving_end_yaml_form_cmds_file.yml) - # Processed by run_mq_comms_cmds.yml.
 4. [**mq_chlauth_yaml_form_cmds_file.yml**](cmds_files/mq_chlauth_yaml_form_cmds_file.yml)
 5. [**mq_start_stop_yaml_form_cmds_file.yml**](cmds_files/mq_start_stop_yaml_form_cmds_file.yml)
 6. [**mq_clus_qmgr_yaml_form_cmds_file.yml**](cmds_files/mq_clus_qmgr_yaml_form_cmds_file.yml)
@@ -83,7 +83,7 @@ display_skipped_hosts=False
 
   By default, the inventory file as specified in the supplied **ansible.cfg** file is used. However, users can specify an alternate inventory file by changing the setting in **ansible.cfg** or by using the **-i option** to specify the path to the **alternate inventory file** when running a playbook. For example, users can define a **myhosts.yml** file in the **inventories** folder and issue:
   ```
-  ansible-playbook playbooks/run-mq-cluster-cmds.yml -i inventories/myhosts.yml
+  ansible-playbook playbooks/run_mq_cluster_cmds.yml -i inventories/myhosts.yml
   ```
 
 ## Ansible Collection Requirements
@@ -118,19 +118,19 @@ Change to the directory for the collection, [**mq_ansible_yaml_commands_collecti
 
 1. MQ CRUD commands sample playbook, issue:
     ```
-    ansible-playbook playbooks/run-mq-crud-cmds.yml
+    ansible-playbook playbooks/run_mq_crud_cmds.yml
     ```
 2. MQ CF structure commands sample playbook, issue:
     ```
-    ansible-playbook playbooks/run-mq-cfstruct-cmds.yml
+    ansible-playbook playbooks/run_mq_cfstruct_cmds.yml
     ```
 3. MQ communications commands sample playbook to define MQ resources at sending and receiving queue managers, issue:
     ```
-    ansible-playbook playbooks/run-mq-comms-cmds.yml
+    ansible-playbook playbooks/run_mq_comms_cmds.yml
     ```
 4. MQ channel authentication rules commands sample playbook, issue:
     ```
-    ansible-playbook playbooks/run-mq-chlauth-cmds.yml -e @playbooks/vars/role_override_vars_for_chlauth_cmds.yml
+    ansible-playbook playbooks/run_mq_chlauth_cmds.yml -e @playbooks/vars/role_override_vars_for_chlauth_cmds.yml
     ```
     In this case, the argument overrides are specified in a variable overrides file with the **-e (extra-vars)** option when running the playbook. It is important to prepend the directory for the role overrides file with the **@ symbol** as shown in the above example.
 
@@ -138,15 +138,15 @@ Change to the directory for the collection, [**mq_ansible_yaml_commands_collecti
 
 5. MQ start and stop commands sample playbook, issue:
     ```
-    ansible-playbook playbooks/run-mq-start-stop-cmds.yml
+    ansible-playbook playbooks/run_mq_start_stop_cmds.yml
     ```
 6. MQ cluster queue manager commands sample playbook, issue:
     ```
-    ansible-playbook playbooks/run-mq-clus-qmgr-cmds.yml
+    ansible-playbook playbooks/run_mq_clus_qmgr_cmds.yml
     ```
 7. MQ display queue manager attributes sample playbook, issue:
     ```
-    ansible-playbook playbooks/run-mq-display-qmgr-cmds.yml -vv
+    ansible-playbook playbooks/run_mq_display_qmgr_cmds.yml -vv
     ```
     The **verbose options (-vv or -vvv)** options provides additional information that may be useful for debug purposes.
 

@@ -87,13 +87,13 @@ mq_commands:
 ...
 ```
 
-## Example Playbook: run-mq-start-stop-cmds.yml
+## Example Playbook: run_mq_start_stop_cmds.yml
 ```
 ---
 # (c) Copyright IBM Corporation 2023
 # Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
 
-# Playbook file: playbooks/run-mq-start-stop-cmds.yml
+# Playbook file: playbooks/run_mq_start_stop_cmds.yml
 
 # This sample playbook demonstrates how to invoke the runMQCmds role with arguments, to run
 # MQ start and stop commands.
@@ -113,7 +113,7 @@ mq_commands:
 ## Running the example playbook
 To run the example playbook, which is available with the **mq_ansible_yaml_commands_collection**, issue the following command:
 ```
-ansible-playbook playbooks/run-mq-start-stop-cmds.yml
+ansible-playbook playbooks/run_mq_start_stop_cmds.yml
 ```
 ## License
 Licensed under [**Apache License**](https://opensource.org/licenses/Apache-2.0).

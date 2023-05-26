@@ -9,7 +9,7 @@
 #
 # For example, to run the playbook while in the collection folder, issue:
 #
-#   ansible-playbook ./playbooks/run-mq-chlauth-cmds.yml -e @./playbooks/vars/role_override_vars_for_chlauth_cmds.yml
+#   ansible-playbook ./playbooks/run_mq_chlauth_cmds.yml -e @./playbooks/vars/role_override_vars_for_chlauth_cmds.yml
 #
 # where '-e' is the option for extra variables. It is important to prepend the YAML form variables file with the '@' symbol as shown in the above example. 
 #
