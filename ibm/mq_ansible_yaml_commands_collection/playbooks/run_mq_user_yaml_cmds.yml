@@ -4,7 +4,7 @@
 
 # Playbook file: playbooks/run_mq_user_yaml_cmds.yml
 
-# Playbook for users to specify argument overrides specific to their environments, and invoke the runMQCmds role 
+# Playbook for users to set environment specfic argument overrides, and invoke the runMQCmds role 
 # against their own MQ cmds file (see supplied playbooks for working examples).)
 
 - name: Playbook to run user specified YAML form MQ commands specified in a cmds file
