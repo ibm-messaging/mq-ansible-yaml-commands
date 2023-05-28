@@ -105,16 +105,17 @@ display_skipped_hosts=False
     The files for the collection are stored in the Ansible defined directory structures for [**Collection directories and files**](https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_structure.html#collection-directories-and-files) and [**Role directory structure**](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#role-directory-structure). 
     
     For the MQ collections to function correctly, it is important that users keep to these directory structures.
-- Perform the following customization steps as required: 
+- Perform the following customization steps **as required**: 
 
-  1. Set any argument overrides, on the invocation of role runMQCmds. Some default values set for the role like **webserver_addr and qmgr_name** will not be valid for user environments. As Ansible recommends that users do not change the supplied default values, the sample playbooks show numerous ways of customizing the default values by specifying them as argument overrides on the runMQCmds role. However, given the nature of some argument values, it would be acceptable for users to replace default values with user-specific values as this may help reduce administrative overhead.
-
+  1. Set any argument overrides, on the invocation of role runMQCmds. Some default values set for the role like **webserver_addr and qmgr_name** will not be valid for user environments. As Ansible recommends that users do not change the supplied default values, the sample playbooks show numerous ways of customizing the default values by specifying them as argument overrides on the runMQCmds role. However, given the nature of some argument values, it would be acceptable for users to replace the supplied default values in **defaults/main.yml** with user-specific values as this may help reduce administrative overhead.
 
   2. Update the REST API call invocation in [**prepare_and_run_mq_cmd.yml**](./roles/runMQCmds/tasks/prepare_and_run_mq_cmd.yml) if a different type of authentication is to be used: see: [**IBM MQ Console and REST API security**](https://www.ibm.com/docs/en/ibm-mq/9.3?topic=securing-mq-console-rest-api-security) for further information.
 
   3. Update the samples, or create new cmds and playbook files, to specify and run MQ commands specific for user MQ environments.
 
       Where applicable, remember to replace any **host name** and **port number** values with specific values for user environments.
+
+  4. Update the **inventories/localhost.ini** file.
 
 - Run the sample playbooks as described below.
 
@@ -174,13 +175,12 @@ this will install the collection into the user's **.ansible** directory on the s
 ```
 ansible-galaxy collection install ibm-mq_ansible_yaml_commands_collection-1.0.0.tar.gz --force
 ```
-As described above, users will need to perform some customization before the playbooks can be run. Users can navigate to the respective directories to customize necessary files. For example, the **cmds_files**, the **playbooks**, the **inventories/localhost.ini** file and the **defaults/main.yml** file.
+As described above, users will need to perform some customization before the playbooks can be run. Users can navigate to the respective directories that were just installed, to customize necessary files.
 
 Once the necessary customization has been performed, users can run the playbooks issuing the following command from any directory:
 ```
 ansible-playbook ibm.mq_ansible_yaml_commands_collection.<playbook_name>
 ```
-
 Replace **<playbook_name>** with the name of the playbook to be run. For example, to run the Cluster Queue Manager commands sample playbook **run_mq_clus_qmgr_yaml_cmds**, issue the following command:
 ```
 ansible-playbook ibm.mq_ansible_yaml_commands_collection.run_mq_clus_qmgr_yaml_cmds
