@@ -2,10 +2,10 @@
 # (c) Copyright IBM Corporation 2023
 # Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
 
-# File: playbooks/vars/override_vars_for_chlauth_cmds.yml
+# File: playbooks/vars/role_overrides_mq_chlauth_yaml_cmds.yml
 
-# Variables file for playbook run-mq-chlauth-cmds.yml
+# Variables file for playbook run_mq_chlauth_yaml_cmds.yml
 
 # runMQCmds role override value to be used when running the channel authentication rules commands.
-cmds_file_name: ../cmds_files/mq_chlauth_yaml_form_cmds_file.yml
+cmds_file_name: ../cmds_files/mq_chlauth_yaml_cmds.yml
 ...

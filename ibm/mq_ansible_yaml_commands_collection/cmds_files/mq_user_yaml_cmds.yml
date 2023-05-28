@@ -1,0 +1,28 @@
+---
+# (c) Copyright IBM Corporation 2023
+# Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
+
+# File: cmds_files/mq_user_yaml_cmds.yml
+
+# Cmds file for users to add their own YAML form MQ commands (see supplied cmds files for working examples).
+#
+# Commands and their attributes are specified as key/value pairs. The key/value pairs are 
+# identical to those that can be specified when using the MQ administrative POST REST API 
+# to issue JSON format MQSC commands. Any key/value pairs not specified will be set to
+# default values as defined for the queue manager on which commands are run.
+#
+# In YAML, it is important to specify case sensitive string names in single quotes, but note 
+# that on the z/OS platform, some values may be translated to uppercase.
+
+# Array of my MQ commands.
+mq_commands:
+#
+# My MQ commands.
+#
+# My MQ command.
+  - command:
+    name:
+    parameters:
+    qualifier:
+    responseParameters:
+...

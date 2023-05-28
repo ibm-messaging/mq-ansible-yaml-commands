@@ -2,7 +2,7 @@
 # (c) Copyright IBM Corporation 2023
 # Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
 
-# File: cmds_files/mq_receiving_end_yaml_form_cmds_file.yml
+# File: cmds_files/mq_receiving_end_yaml_cmds.yml
 
 # Sample file containing YAML form MQ commands for a receiving queue manager, to be run by the runMQCmds role.
 #

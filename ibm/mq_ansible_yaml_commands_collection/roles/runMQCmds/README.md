@@ -44,14 +44,14 @@ The following files are assocociated with the **runMQCmds** role:
 ## Dependencies
 See **Requirements** above. 
 
-## Example cmds input file: mq_start_stop_yaml_form_cmds_file.yml
+## Example cmds input file: mq_start_stop_yaml_cmds.yml
 The purpose of the following file is to show how YAML form MQ start and stop commands could be issued.
 ```
 ---
 # (c) Copyright IBM Corporation 2023
 # Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
 
-# File: cmds_files/mq_start_stop_yaml_form_cmds_file.yml
+# File: cmds_files/mq_start_stop_yaml_cmds.yml
 
 # Sample file that contains YAML form MQ start and stop commands to be run by the runMQCmds role.
 #
@@ -93,27 +93,27 @@ mq_commands:
 # (c) Copyright IBM Corporation 2023
 # Apache License, Version 2.0 (see https://opensource.org/licenses/Apache-2.0)
 
-# Playbook file: playbooks/run_mq_start_stop_cmds.yml
+# Playbook file: playbooks/run_mq_start_stop_yaml_cmds.yml
 
 # This sample playbook demonstrates how to invoke the runMQCmds role with arguments, to run
 # MQ start and stop commands.
 
-- name: Sample playbook to run YAML form MQ for z/OS CF structure commands specified in a cmds file
-
+- name: Sample playbook to run YAML form MQ start and stop commands specified in a cmds file
   hosts: localhost
   gather_facts: yes
+
   roles:
   - { role: runMQCmds,
-        cmds_file_name: '../cmds_files/mq_start_stop_yaml_form_cmds_file.yml',
+        cmds_file_name: '../cmds_files/mq_start_stop_yaml_cmds.yml',
         stop_on_error: 'false'
     }
 ...
 ```
 
 ## Running the example playbook
-To run the example playbook, which is available with the **mq_ansible_yaml_commands_collection**, issue the following command:
+To run the example playbook, which is available with the **mq_ansible_yaml_commands_collection**, set the attributes for your environment as described in the documentation for the collection and issue the following command from the **mq_ansible_yaml_commands_collection** directory for the collection:
 ```
-ansible-playbook playbooks/run_mq_start_stop_cmds.yml
+ansible-playbook playbooks/run_mq_start_stop_yaml_cmds.yml
 ```
 ## License
 Licensed under [**Apache License**](https://opensource.org/licenses/Apache-2.0).

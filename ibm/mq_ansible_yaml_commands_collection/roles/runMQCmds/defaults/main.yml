@@ -9,7 +9,7 @@
 # If required, default values can be overriden by supplying them as arguments on the invocation 
 # of the runMQCmds role or by supplying them in a variables file. Users should not change this 
 # default file.
-cmds_file_name: ../cmds_files/mq_crud_yaml_form_cmds_file.yml
+cmds_file_name: ../cmds_files/mq_crud_yaml_cmds.yml
 webserver_addr: my.mqweb.server.address
 webserver_port: 9443
 api_userid: mqadmin
