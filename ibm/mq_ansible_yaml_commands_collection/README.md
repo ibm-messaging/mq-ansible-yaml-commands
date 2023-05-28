@@ -107,7 +107,8 @@ display_skipped_hosts=False
     For the MQ collections to function correctly, it is important that users keep to these directory structures.
 - Perform the following customization steps as required: 
 
-  1. Set any argument overrides, on the invocation of role runMQCmds. Some default values set for the role like **webserver_addr and qmgr_name** will not be valid for user environments. As Ansible recommends that users do not change the supplied default values, the sample playbooks show numerous ways of setting such argument overrides.
+  1. Set any argument overrides, on the invocation of role runMQCmds. Some default values set for the role like **webserver_addr and qmgr_name** will not be valid for user environments. As Ansible recommends that users do not change the supplied default values, the sample playbooks show numerous ways of customizing the default values by specifying them as argument overrides on the runMQCmds role. However, given the nature of some argument values, it would be acceptable for users to replace default values with user-specific values as this may help reduce administrative overhead.
+
 
   2. Update the REST API call invocation in [**prepare_and_run_mq_cmd.yml**](./roles/runMQCmds/tasks/prepare_and_run_mq_cmd.yml) if a different type of authentication is to be used: see: [**IBM MQ Console and REST API security**](https://www.ibm.com/docs/en/ibm-mq/9.3?topic=securing-mq-console-rest-api-security) for further information.
 
@@ -154,8 +155,37 @@ Change to the directory for the collection, [**mq_ansible_yaml_commands_collecti
     ```
     The **verbose options (-vv or -vvv)** options provides additional information that may be useful for debug purposes.
 
-## Running as an ansible galaxy collection
-The playbooks have not been built into an 
+## Ansible tarball archive file (*.tar.gz) and running playbooks
+The following command was issued to build the collection into an archive tarball file called  **ibm-mq_ansible_yaml_commands_collection-1.0.0.tar.gz**:
+```
+ansible-galaxy collection build
+```
+The archive file has been supplied to allow users to easily distribute the collection to a remote server, if required. 
+
+The archive file can be installed by issuing the following command:
+```
+ansible-galaxy collection install ibm-mq_ansible_yaml_commands_collection-1.0.0.tar.gz
+```
+this will install the collection into the user's **.ansible** directory on the server. For example:
+```
+/.ansible/collections/ansible_collections/ibm/mq_ansible_yaml_commands_collection
+```
+**Note:** If for some reason it is necessary to re-install the collection into the same location, the **--force** option may need to be specified to replace the existing installation:
+```
+ansible-galaxy collection install ibm-mq_ansible_yaml_commands_collection-1.0.0.tar.gz --force
+```
+As described above, users will need to perform some customization before the playbooks can be run. Users can navigate to the respective directories to customize necessary files. For example, the **cmds_files**, the **playbooks**, the **inventories/localhost.ini** file and the **defaults/main.yml** file.
+
+Once the necessary customization has been performed, users can run the playbooks issuing the following command from any directory:
+```
+ansible-playbook ibm.mq_ansible_yaml_commands_collection.<playbook_name>
+```
+
+Replace **<playbook_name>** with the name of the playbook to be run. For example, to run the Cluster Queue Manager commands sample playbook **run_mq_clus_qmgr_yaml_cmds**, issue the following command:
+```
+ansible-playbook ibm.mq_ansible_yaml_commands_collection.run_mq_clus_qmgr_yaml_cmds
+```
+**Note:** When playbooks are run in this way, it is not necessary to specify the **.yml** extention.
 
 ## Potential Data Conversion issue with MQ for z/OS Queue Managers
 z/OS Systems today are generally shipped with **Code Page (CCSID) 037** installed by default. MQ for z/OS Queue Managers are by default configured with **CCSID(500)**. However, users can (and do) change this to a local CCSID value for their country.

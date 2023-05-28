@@ -6,9 +6,11 @@
 
 # defaults file for role_runMQCmds
 #
-# If required, default values can be overriden by supplying them as arguments on the invocation 
-# of the runMQCmds role or by supplying them in a variables file. Users should not change this 
-# default file.
+# As Ansible recommends that users do not change the supplied default values, the sample playbooks 
+# show numerous ways of customizing the default values by specifying them as argument overrides on the 
+# runMQCmds role. However, given the nature of some argument values, it would be acceptable for users 
+# to replace default values with user-specific values as this may help reduce administrative overhead.
+
 cmds_file_name: ../cmds_files/mq_crud_yaml_cmds.yml
 webserver_addr: my.mqweb.server.address
 webserver_port: 9443
